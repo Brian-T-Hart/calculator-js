@@ -78,14 +78,24 @@ function handleOperator(input) {
         let a = total[0];
         let b = total.slice(1, 5);
         exponent = decimalIndex - 1;
-        total = a + '.' + b + 'e' + exponent;
+        if (exponent == '0') {
+          total = a + '.' + b;
+        }
+        else {
+          total = a + '.' + b + 'e' + exponent;
+        }
       }
 
       else {
         let a = total[0];
         let b = total.slice(1, 5);
         exponent = total.length - 1;
-        total = a + '.' + b + 'e' + exponent;
+        if (exponent == '0') {
+          total = a + '.' + b;
+        }
+        else {
+          total = a + '.' + b + 'e' + exponent;
+        }
       }
     }
 
