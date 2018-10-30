@@ -69,23 +69,61 @@ function handleNumberInput(input) {
 
 function handleOperator(input) {
   if (num1 && operator && num2) {
-    var total = calculate(num1, operator, num2);
+    var total = calculate(num1, operator, num2).toString();
+
+    if (total.length >= 12 && total > 1) {
+      if (total.includes('.')) {
+        let decimalIndex = total.indexOf('.');
+        total = total.replace('.', '');
+        let a = total[0];
+        let b = total.slice(1, 5);
+        exponent = decimalIndex - 1;
+        total = a + '.' + b + 'e' + exponent;
+      }
+
+      else {
+        let a = total[0];
+        let b = total.slice(1, 5);
+        exponent = total.length - 1;
+        total = a + '.' + b + 'e' + exponent;
+      }
+    }
+
+    if (total.length >= 12 && total < 1) {
+      let decimalIndex = total.indexOf('.');
+      var i = decimalIndex + 1;
+
+      while (total[i] == 0) {
+        i++;
+      }
+
+      var a = total[i];
+      var b = total.slice(i + 1, i + 5);
+      var exponent = decimalIndex - i;
+      total = a + '.' + b + 'e' + exponent;
+    }
+
     output.innerHTML = total;
-    if (operator === "=") {
+
+    if (input == "=") {
       num1 = total;
+      num2 = "";
       operator = "";
     }
+    
     else {
       num1 = total;
       num2 = "";
       operator = input;
     }
   }
+
   else if (num1) {
     if (input !== '=') {
       operator = input;
     }
   }
+
   else {
     clearButton();
   }
@@ -98,15 +136,12 @@ function calculate(num1, operator, num2) {
   switch (operator) {
     case '+':
       return (a + b);
-      break;
         
     case '-':
       return (a - b);
-      break;
       
     case 'x':
       return (a * b);
-      break;
       
     case '/':
       if (b === 0) {
@@ -115,14 +150,11 @@ function calculate(num1, operator, num2) {
       else {
         return (a / b);
       }
-      break;
       
     case '^':
       return (Math.pow(a, b));
-      break;
   
     default:
       return('Please check your entries and try again.');
-      break;
   }
 };
