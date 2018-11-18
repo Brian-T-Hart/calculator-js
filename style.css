@@ -3,34 +3,35 @@ body {
 	color: #FFF;
 	display: block;
 	font-family: Helvetica;
-  }
+}
   
-  #main-container {
+#main-container {
 	max-width: 300px;
 	margin: auto;
-  }
+}
   
-  #output {
+#output {
+	font-size: 2.4em;
 	text-align: right;
-  }
+}
   
-  #output-container {
+#output-container {
 	color: #FFF;
 	font-size: 20px;
 	height: 80px;
 	padding-bottom: 10px;
-	margin: 0 10px;
+	margin: 10px 10px 0;
 	overflow: hidden;
-  }
+}
   
-  .button-row {
+.button-row {
 	height: 80px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-  }
+}
   
-  .button {
+.button {
 	border: 1px solid black;
 	border-radius: 40px;
 	margin: 5px;
@@ -39,14 +40,14 @@ body {
 	width: 20%;
 	text-align: center;
 	font-size: 24px
-  }
+}
   
-  .button.white {
+.button.white {
 	background-color: #DDD;
 	color: #000;
-  }
+}
   
-  .button-long {
+.button-long {
 	background-color: gray;
 	width: 60%;
 	margin: 5px;
@@ -54,12 +55,12 @@ body {
 	border: 1px solid #000;
 	border-radius: 40px;
 	padding: 16px 10px 26px;
-  }
+}
   
-  .button.orange {
+.button.orange {
 	background-color: orange;
-  }
+}
   
-  .button.gray {
+.button.gray {
 	background-color: gray;
-  }
+}

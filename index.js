@@ -71,7 +71,7 @@ function handleOperator(input) {
   if (num1 && operator && num2) {
     var total = calculate(num1, operator, num2).toString();
 
-    if (total.length >= 12 && total > 1) {
+    if (total.length >= 10 && total > 1) {
       if (total.includes('.')) {
         let decimalIndex = total.indexOf('.');
         total = total.replace('.', '');
@@ -99,7 +99,7 @@ function handleOperator(input) {
       }
     }
 
-    if (total.length >= 12 && total < 1) {
+    if (total.length >= 10 && total < 1) {
       let decimalIndex = total.indexOf('.');
       var i = decimalIndex + 1;
 
