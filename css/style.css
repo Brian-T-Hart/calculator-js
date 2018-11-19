@@ -72,3 +72,11 @@ a {
 .button.gray {
 	background-color: gray;
 }
+
+.hidden {
+	display: none;
+}
+
+.trig-inverse {
+	font-size: 18px;
+}

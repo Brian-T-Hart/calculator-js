@@ -1,5 +1,6 @@
 var num1 = "";
 var operator = "";
+var inverse = false;
 var output = document.getElementById('output');
 
 var clearButton = document.getElementById('ac');
@@ -10,12 +11,12 @@ clearButton.addEventListener('click', function(e) {
 	output.innerHTML = "0";
 });
 
-function clearOpacity() {
-	var allElements = document.querySelectorAll('*');
-	for (var k = 0; k < allElements.length; k++) {
-		allElements[k].style.opacity = '1';
-	}
-}
+var inverseButton = document.getElementById('inverse');
+inverseButton.addEventListener('click', function(e) {
+	handleBtnStyle(e.target.id);
+	handleInverseButton();
+});
+
 
 var numButtons = document.querySelectorAll('.button.gray');
 for (var i = 0; i < numButtons.length; i++) {
@@ -44,9 +45,32 @@ var opButtons = document.querySelectorAll('.button.operator');
 		});
 	};
 
+function clearOpacity() {
+	var allElements = document.querySelectorAll('*');
+	for (var k = 0; k < allElements.length; k++) {
+		allElements[k].style.opacity = '1';
+	}
+}
+
 function handleBtnStyle(input) {
 	clearOpacity();
 	document.getElementById(input).style.opacity = '0.6';
+}
+
+function handleInverseButton(input) {
+	for (var k = 0; k < opButtons.length; k++) {
+		if (opButtons[k].classList.contains('trig')) {
+			opButtons[k].classList.remove('trig');
+			opButtons[k].classList.add('hidden');
+		}
+		else if (opButtons[k].classList.contains('hidden')) {
+			opButtons[k].classList.remove('hidden');
+			opButtons[k].classList.add('trig');
+		}
+		else {
+			console.log('This is not a trig button.');
+		}
+	}
 }
 
 function handleNumberInput(input) {
@@ -55,10 +79,13 @@ function handleNumberInput(input) {
 };
 
 function handleOperator(operator) {
-	if (num1) {
-		var total = calculate(num1, operator).toString();
+	if (num1 === "") {
+		output.innerHTML = 'error';
+	}
 
-		console.log(total);
+	else {
+
+		var total = calculate(num1, operator).toString();
 
 		if (Number(total) > -0.0000000001 && Number(total) < 0.00000000001) {
 			total = 0;
@@ -73,9 +100,7 @@ function handleOperator(operator) {
 		}
 
 		output.innerHTML = total;
-	}
 
-	else {
-		clearButton();
+		num1 = total;
 	}
 };

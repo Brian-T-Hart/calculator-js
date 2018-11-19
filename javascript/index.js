@@ -51,7 +51,6 @@ var opButtons = document.querySelectorAll('.button.operator');
   };
 
 function handleBtnStyle(input) {
-  console.log('handling style');
   clearOpacity();
   document.getElementById(input).style.opacity = '0.6';
 }

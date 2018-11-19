@@ -35,8 +35,14 @@ function calculate(num1, operator, num2) {
 		case 'sin':
 			return(Math.sin(a * Math.PI / 180));
 		
+		case 'asin':
+			return(Math.asin(a) * 180 / Math.PI);
+		
 		case 'cos':
 			return(Math.cos(a * Math.PI / 180));
+		
+		case 'acos':
+			return(Math.acos(a) * 180 / Math.PI);
 	
 		case 'tan':
 			if (a % 90 === 0) {
@@ -45,6 +51,9 @@ function calculate(num1, operator, num2) {
 			else {
 				return(Math.tan(a * Math.PI / 180));
 			}
+		
+		case 'atan':
+			return(Math.atan(a) * 180 / Math.PI);
 	
 		default:
 			return('Please check your entries and try again.');
