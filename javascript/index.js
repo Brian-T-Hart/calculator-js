@@ -69,48 +69,11 @@ function handleNumberInput(input) {
 
 function handleOperator(input) {
   if (num1 && operator && num2) {
+
     var total = calculate(num1, operator, num2).toString();
 
-    if (total.length >= 10 && total > 1) {
-      if (total.includes('.')) {
-        let decimalIndex = total.indexOf('.');
-        total = total.replace('.', '');
-        let a = total[0];
-        let b = total.slice(1, 5);
-        exponent = decimalIndex - 1;
-        if (exponent == '0') {
-          total = a + '.' + b;
-        }
-        else {
-          total = a + '.' + b + 'e' + exponent;
-        }
-      }
-
-      else {
-        let a = total[0];
-        let b = total.slice(1, 5);
-        exponent = total.length - 1;
-        if (exponent == '0') {
-          total = a + '.' + b;
-        }
-        else {
-          total = a + '.' + b + 'e' + exponent;
-        }
-      }
-    }
-
-    if (total.length >= 10 && total < 1) {
-      let decimalIndex = total.indexOf('.');
-      var i = decimalIndex + 1;
-
-      while (total[i] == 0) {
-        i++;
-      }
-
-      var a = total[i];
-      var b = total.slice(i + 1, i + 5);
-      var exponent = decimalIndex - i;
-      total = a + '.' + b + 'e' + exponent;
+    if (total.length >= 10) {
+      total = Number(total).toExponential(2);
     }
 
     output.innerHTML = total;
@@ -136,35 +99,5 @@ function handleOperator(input) {
 
   else {
     clearButton();
-  }
-};
-
-function calculate(num1, operator, num2) {
-  var a = Number(num1);
-  var b = Number(num2);
-  
-  switch (operator) {
-    case '+':
-      return (a + b);
-        
-    case '-':
-      return (a - b);
-      
-    case 'x':
-      return (a * b);
-      
-    case '/':
-      if (b === 0) {
-        return ('undefined')
-      }
-      else {
-        return (a / b);
-      }
-      
-    case '^':
-      return (Math.pow(a, b));
-  
-    default:
-      return('Please check your entries and try again.');
   }
 };
