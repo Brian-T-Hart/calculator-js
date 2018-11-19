@@ -23,6 +23,15 @@ function calculate(num1, operator, num2) {
 		case '^':
 			return (Math.pow(a, b));
 		
+		case '!':
+			var factorial = a;
+
+			for (var i = a - 1; i > 0; i--) {
+				factorial *= i;
+			}
+
+			return(factorial);
+		
 		case 'sin':
 			return(Math.sin(a * Math.PI / 180));
 		
