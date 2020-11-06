@@ -1,7 +1,8 @@
 // register service worker
-var registerUrl = '/calculator/sw_cached_site.js';
-var swScope = '/calculator/';
+var registerUrl = '/calculator-js/sw_cached_site.js';
+var swScope = '/calculator-js/';
 
+// for local dev
 if (location.hostname !== 'brian-t-hart.github.io') {
 	registerUrl = '/sw_cached_site.js';
 	swScope = '/';
