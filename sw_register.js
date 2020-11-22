@@ -1,12 +1,6 @@
 // register service worker
-var registerUrl = '/calculator-js/sw_cached_site.js';
+var registerUrl = '/calculator-js/sw_cached_pages.js';
 var swScope = '/calculator-js/';
-
-// for local dev
-if (location.hostname !== 'brian-t-hart.github.io') {
-	registerUrl = '/sw_cached_site.js';
-	swScope = '/';
-}
 
 //make sure sw are supported
 if('serviceWorker' in navigator){
